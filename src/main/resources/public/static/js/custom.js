@@ -1,5 +1,5 @@
 /**
- * Copyright, MeymeForms 2017
+ * Copyright, FinancialAct 2017
  *
  * custom.js
  */
