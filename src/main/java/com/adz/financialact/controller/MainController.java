@@ -20,9 +20,9 @@ public class MainController
 		return ViewDefinitions.ACT;
 	}
 	
-	@GetMapping(value="/values")
+	@GetMapping(value="/value")
 	public String showValue()
 	{
-		return ViewDefinitions.VALUES;
+		return ViewDefinitions.VALUE;
 	}
 }

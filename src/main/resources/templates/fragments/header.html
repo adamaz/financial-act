@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<!-- === HEAD SETTINGS === -->
+		<!-- Page content type & character set -->
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+	<header class="main-header" th:fragment="header">
+		<!-- Fixed navbar -->
+	    <nav class="navbar navbar-default navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+	          	<a class="navbar-brand" href="/">
+	          		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+	          		Financial <b>ACT</b>
+          		</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav">
+	            <li id="menuValue"><a href="/value">Value</a></li>
+	            <li id="menuValueStatus"><a href="/valuestatus">Value Status</a></li>
+	            <li id="menuAct"><a href="/act">Act</a></li>
+	            <li id="menuActStatus"><a href="/actstatus">Act Status</a></li>
+	            <li id="menuSearch"><a href="/search">Search Values</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </nav>
+    </header>
+</body>
+</html>
