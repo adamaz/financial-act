@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.adz.financialact.common.util.ViewDefinitions;
+import com.adz.financialact.entity.ActEntity;
 
 @Controller
 public class MainController
@@ -15,7 +16,7 @@ public class MainController
 	}
 	
 	@GetMapping(value="/act")
-	public String showAct()
+	public String showAct(ActEntity actEntity)
 	{
 		return ViewDefinitions.ACT;
 	}
