@@ -2,14 +2,13 @@ package com.adz.financialact.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.adz.financialact.common.util.ViewDefinitions;
 
 @Controller
 public class MainController
 {
-	@RequestMapping(value="/")
+	@GetMapping(value="/")
 	public String index()
 	{
 		return ViewDefinitions.HOME;
