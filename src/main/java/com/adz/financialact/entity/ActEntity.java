@@ -70,7 +70,7 @@ public class ActEntity
 	@NotNull
 	private String bank;
 
-	@Column(name = "AMOUNT", length = 20, nullable = false)
+	@Column(name = "AMOUNT", length = 15, nullable = false)
 	@Getter
 	@Setter
 	@NotEmpty(message = "'Amount' is empty!")
