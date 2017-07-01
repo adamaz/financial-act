@@ -7,6 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.adz.financialact.entity.ActEntity;
 
+/**
+ * todo document
+ *
+ */
 @Repository
 public interface ActRepository extends JpaRepository<ActEntity, Long>
 {
