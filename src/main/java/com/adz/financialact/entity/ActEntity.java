@@ -20,6 +20,10 @@ import javax.persistence.NamedNativeQuery;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * todo document
+ *
+ */
 @Entity
 @Table(name = "FINACT")
 public class ActEntity

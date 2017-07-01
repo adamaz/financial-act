@@ -1,5 +1,9 @@
 package com.adz.financialact.common.util;
 
+/**
+ * todo document
+ *
+ */
 public class ViewDefinitions
 {
     /***********************************

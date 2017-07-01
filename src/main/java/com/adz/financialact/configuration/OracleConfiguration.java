@@ -11,6 +11,10 @@ import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 import lombok.Setter;
 
+/**
+ * todo document
+ *
+ */
 @Configuration
 @ConfigurationProperties("oracle")
 public class OracleConfiguration

@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.adz.financialact.common.util.ViewDefinitions;
 import com.adz.financialact.entity.*;
 
+/**
+ * todo document
+ *
+ */
 @Controller
 public class MainController
 {
