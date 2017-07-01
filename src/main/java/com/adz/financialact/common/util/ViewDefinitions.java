@@ -9,6 +9,6 @@ public class ViewDefinitions
     public static final String HOME             = ("index");
     public static final String VALUE           	= ("value");
     public static final String ACT              = ("act");
-    public static final String STATUS           = ("status");
+    public static final String STATS           	= ("stats");
     public static final String SEARCH_VALUES    = ("search");
 }
