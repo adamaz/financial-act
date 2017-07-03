@@ -1,5 +1,7 @@
 package com.adz.financialact.entity;
 
+import com.adz.financialact.common.bean.ValueResult;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +14,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.ConstructorResult;
+import javax.persistence.ColumnResult;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedNativeQueries;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +29,24 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "FINVALUES")
-@NamedNativeQuery(name="ValueEntity.getValueStats", query="SELECT to_char(VALUE_DATE, 'YYYY-MM') as dateMonth, SUM(AMOUNT) as totalAmount, COUNT(VALUE_ID) as totalEntries FROM FINVALUES GROUP BY to_char(VALUE_DATE, 'YYYY-MM') ORDER BY dateMonth DESC", resultSetMapping="StatsMapping")
+@SqlResultSetMapping(name = "ValueResultMapping",
+					 classes = @ConstructorResult(
+        				targetClass = ValueResult.class,
+			        	columns = {
+			            	@ColumnResult(name = "valueDate"),
+			            	@ColumnResult(name = "valueNumber"),
+			            	@ColumnResult(name = "label"),
+			            	@ColumnResult(name = "amount", type = Long.class),
+			            	@ColumnResult(name = "type"),
+			            	@ColumnResult(name = "bank")
+			        	}
+					)
+)
+@NamedNativeQueries({
+	@NamedNativeQuery(name="ValueEntity.getValueStats", query="SELECT to_char(VALUE_DATE, 'YYYY-MM') as dateMonth, SUM(AMOUNT) as totalAmount, COUNT(VALUE_ID) as totalEntries FROM FINVALUES GROUP BY to_char(VALUE_DATE, 'YYYY-MM') ORDER BY dateMonth DESC", resultSetMapping="StatsMapping"),
+	@NamedNativeQuery(name="ValueEntity.getValueResults", query="SELECT NO_VALUE as valueNumber, to_char(VALUE_DATE, 'YYYY-MM-DD') as valueDate, (BENEF || ' ' || ACCTBENEF || ' ' || REFERENCE) as label, AMOUNT as amount, TYPE as type, BANK as bank FROM FINVALUES", resultSetMapping="ValueResultMapping")/*,
+	@NamedNativeQuery(name="ValeurEntity.getResultsByValueNumber", query="SELECT NO_VALUE as valueNumber, to_char(VALUE_DATE, 'YYYY-MM-DD') as valueDate, (BENEF || ' ' || ACCTBENEF || ' ' || REFERENCE) as label, AMOUNT as amount, TYPE as type, BANK as bank FROM FINVALUES", resultSetMapping="ValueResultMapping")*/
+})
 public class ValueEntity
 {
 	/*****************************
