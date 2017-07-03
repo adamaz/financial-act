@@ -1,7 +1,7 @@
 package com.adz.financialact.service;
 
 import com.adz.financialact.entity.*;
-import com.adz.financialact.repository.ActRepository;
+import com.adz.financialact.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,22 +18,35 @@ import java.sql.SQLException;
  *
  */
 @Service
-/*@Transactional*/
+@Transactional
 public class FinancialService implements FinancialServiceInterface
 {
 	@Autowired
 	private ActRepository actRepository;
 
+	@Autowired
+	private ValueRepository valueRepository;
+
 	/**
-	 * Save Act entity
-	 * @param actEntity
-	 * 
-	 * @return true if the entity has been successfully saved into the database, false otherwise
+	 * @see FinancialServiceInterface
 	 */
 	public boolean saveActEntity(ActEntity actEntity) throws SQLException, JpaSystemException, DataAccessException
 	{
 		boolean isOk = true;
 		actRepository.save(actEntity);
+
+		// Handle isOk and throw custom exception
+
+		return isOk;
+	}
+
+	/**
+	 * @see FinancialServiceInterface
+	 */
+	public boolean saveValueEntity(ValueEntity valueEntity) throws SQLException, JpaSystemException, DataAccessException
+	{
+		boolean isOk = true;
+		valueRepository.save(valueEntity);
 
 		// Handle isOk and throw custom exception
 

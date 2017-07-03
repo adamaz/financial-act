@@ -42,21 +42,21 @@ public class ValueEntity
 	@Column(name = "NO_VALUE", length = 20, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Value Number' is empty!")
+	@NotEmpty(message = "Value Number is empty!")
 	@NotNull
 	private String valueNumber;
 
 	@Column(name = "AMOUNT", length = 15, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Amount' is empty!")
+	@NotEmpty(message = "Amount is empty!")
 	@NotNull
 	private String amount;
 	
 	@Column(name = "TYPE", length = 200, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Value Type' is empty!")
+	@NotEmpty(message = "Value Type is empty!")
 	@NotNull
 	private String type;
 
@@ -65,38 +65,38 @@ public class ValueEntity
 	@Setter
 	private java.sql.Date valueDate;
 
-	@Column(name = "ORDER", length = 200, nullable = false)
+	@Column(name = "VALUE_ORDER", length = 200, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Order Type' is empty!")
+	@NotEmpty(message = "Order is empty!")
 	@NotNull
 	private String order;
 
 	@Column(name = "BENEF", length = 200, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Beneficiary' is empty!")
+	@NotEmpty(message = "Beneficiary is empty!")
 	@NotNull
 	private String beneficiary;
 
 	@Column(name = "ACCTBENEF", length = 20, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Beneficiary Account' is empty!")
+	@NotEmpty(message = "Beneficiary Account is empty!")
 	@NotNull
 	private String beneficiaryAccount;
 
 	@Column(name = "REFERENCE", length = 20, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Reference' is empty!")
+	@NotEmpty(message = "Reference is empty!")
 	@NotNull
 	private String reference;
 
 	@Column(name = "BANK", length = 20, nullable = false)
 	@Getter
 	@Setter
-	@NotEmpty(message = "'Bank' is empty!")
+	@NotEmpty(message = "Bank is empty!")
 	@NotNull
 	private String bank;
 	
