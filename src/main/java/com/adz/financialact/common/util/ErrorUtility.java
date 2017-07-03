@@ -3,11 +3,13 @@ package com.adz.financialact.common.util;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+import java.util.List;
+
 /**
  * todo document
  *
  */
-public class ExceptionUtility
+public class ErrorUtility
 {
 	/*****************************
 	 * STATIC CLASS METHODS
@@ -32,5 +34,22 @@ public class ExceptionUtility
         }
 
         return lMessage;
+    }
+
+    /**
+     * Return error messages caught from form BindingResult
+     * 
+     * @param pBindingResult
+     */
+    public static String getBindingResultErrorMessages(BindingResult pBindingResult)
+    {
+        String errorMessages = "";
+
+        List<FieldError> errors = pBindingResult.getFieldErrors();
+        for (FieldError error : errors ) {
+            errorMessages += "* " + error.getDefaultMessage() + "\n";
+        }
+
+        return errorMessages;
     }
 }

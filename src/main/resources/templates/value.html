@@ -129,6 +129,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="inputReference" class="col-sm-2 control-label">Reference</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="inputReference" th:field="*{reference}" placeholder=""/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('reference')}" th:errors="*{reference}">
+                            'Reference' incorrect
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="inputBank" class="col-sm-2 control-label">Bank</label>
                     <div class="col-sm-6">
                         <select class="form-control" id="inputBank" th:field="*{bank}">

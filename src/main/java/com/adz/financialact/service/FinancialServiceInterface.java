@@ -21,4 +21,12 @@ public interface FinancialServiceInterface
 	 * @return true if the entity has been successfully saved into the database, false otherwise
 	 */
 	public boolean saveActEntity(ActEntity actEntity) throws SQLException, JpaSystemException, DataAccessException;
+
+	/**
+	 * Save Value entity
+	 * @param valueEntity
+	 * 
+	 * @return true if the entity has been successfully saved into the database, false otherwise
+	 */
+	public boolean saveValueEntity(ValueEntity valueEntity) throws SQLException, JpaSystemException, DataAccessException;
 }
