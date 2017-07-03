@@ -3,7 +3,6 @@
 # Description
 	Simple Financial application with SpringBoot, JPA/Hibernate and Oracle.
 
-
 # Installation
 	You must install 'ojdbc7.jar' to be able to work with Oracle
 	Follow the steps in the following link to do so:
