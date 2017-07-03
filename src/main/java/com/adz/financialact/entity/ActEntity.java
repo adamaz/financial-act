@@ -1,5 +1,7 @@
 package com.adz.financialact.entity;
 
+import com.adz.financialact.common.bean.Stats;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,6 +28,17 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "FINACT")
+@SqlResultSetMapping(name = "StatsMapping",
+					 classes = @ConstructorResult(
+        				targetClass = Stats.class,
+			        	columns = {
+			            	@ColumnResult(name = "dateMonth"),
+			            	@ColumnResult(name = "totalAmount", type = Long.class),
+			            	@ColumnResult(name = "totalEntries", type = Long.class)
+			        	}
+					)
+)
+@NamedNativeQuery(name="ActEntity.getActStats", query="SELECT to_char(ACT_DATE, 'YYYY-MM') as dateMonth, SUM(AMOUNT) as totalAmount, COUNT(ACT_ID) as totalEntries FROM FINACT GROUP BY to_char(ACT_DATE, 'YYYY-MM') ORDER BY dateMonth DESC", resultSetMapping="StatsMapping")
 public class ActEntity
 {
 	/*****************************

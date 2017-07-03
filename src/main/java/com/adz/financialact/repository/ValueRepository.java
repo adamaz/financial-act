@@ -6,18 +6,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.adz.financialact.common.bean.Stats;
-import com.adz.financialact.entity.ActEntity;
+import com.adz.financialact.entity.ValueEntity;
 
 /**
  * todo document
  *
  */
 @Repository
-public interface ActRepository extends JpaRepository<ActEntity, Long>
+public interface ValueRepository extends JpaRepository<ValueEntity, Long>
 {
 	// todo document
-	public List<ActEntity> findAll();
+	public List<ValueEntity> findAll();
 
 	// todo document
-	public List<Stats> getActStats();
+	public List<Stats> getValueStats();
 }

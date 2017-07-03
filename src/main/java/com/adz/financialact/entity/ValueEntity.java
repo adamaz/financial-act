@@ -12,9 +12,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.SqlResultSetMapping;
-import javax.persistence.ConstructorResult;
-import javax.persistence.ColumnResult;
 import javax.persistence.NamedNativeQuery;
 
 import lombok.Getter;
@@ -26,6 +23,7 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "FINVALUES")
+@NamedNativeQuery(name="ValueEntity.getValueStats", query="SELECT to_char(VALUE_DATE, 'YYYY-MM') as dateMonth, SUM(AMOUNT) as totalAmount, COUNT(VALUE_ID) as totalEntries FROM FINVALUES GROUP BY to_char(VALUE_DATE, 'YYYY-MM') ORDER BY dateMonth DESC", resultSetMapping="StatsMapping")
 public class ValueEntity
 {
 	/*****************************
