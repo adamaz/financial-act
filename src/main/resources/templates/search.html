@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="/static/img/favicon.ico"/>
+
+    <!-- Page Title -->
+    <title>Value Search</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Bootstrap docs CSS -->
+    <link href="/static/bootstrap/css/docs.css" rel="stylesheet"/>
+
+    <!-- JQueryUI CSS -->
+    <link href="/static/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="/static/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet"/>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/navbar-fixed-top.css" rel="stylesheet"/>
+
+    <!-- Footer CSS -->
+    <link href="/static/css/footer.css" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<!-- PAGE HEADER -->
+	<div th:replace="fragments/header :: header"></div>
+	<!-- ./PAGE HEADER -->
+	
+	<!-- Main container -->
+    <div class="container">
+        <!-- Form recherche -->
+        <div class="bs-callout bs-callout-default">
+            <h2>Recherche</h2>
+            <br/>
+
+            <form class="form-horizontal" action="#" th:action="@{/search}" th:object="${valueSearch}" method="post">
+                <div class="form-group">
+                    <label for="searchNoVal" class="col-sm-2 control-label">Value Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="searchNoVal" th:field="*{valueNumber}" placeholder=""/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valueNumber')}" th:errors="*{valueNumber}">
+                            'Value Number' not correct!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="searchValueDate" class="col-sm-2 control-label">Date</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="searchValueDate" th:field="*{valueDate}" placeholder=""/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('valueDate')}" th:errors="*{valueDate}">
+                            'Date' not correct!
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-6">
+                        <button type="submit" class="btn btn-info">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results by Date -->
+        <div class="bs-callout bs-callout-primary">
+            <h2>Results by Value Date</h2>
+            <br/>
+
+            <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Value Date</th>
+                <th>Label</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Bank</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result : ${resultsByDate}">
+                    <td th:text="${result.getValueDate()}"></td>
+                    <td th:text="${result.getLabel()}"></td>
+                    <td th:text="${result.getAmount()}"></td>
+                    <td th:text="${result.getType()}"></td>
+                    <td th:text="${result.getBank()}"></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Results by Value Number -->
+        <div class="bs-callout bs-callout-success">
+            <h2>Results by Value Number</h2>
+            <br/>
+
+            <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Value Date</th>
+                <th>Label</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Bank</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result : ${resultsByValueNumber}">
+                    <td th:text="${result.getValueDate()}"></td>
+                    <td th:text="${result.getLabel()}"></td>
+                    <td th:text="${result.getAmount()}"></td>
+                    <td th:text="${result.getType()}"></td>
+                    <td th:text="${result.getBank()}"></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <!-- /container -->
+	
+	<!-- PAGE FOOTER -->
+	<div th:replace="fragments/footer :: footer"></div>
+	<!-- ./PAGE FOOTER -->
+
+    <!-- === Include JavaScript files at the end of the document so the pages load faster === -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/jquery/dist/jquery-3.2.1.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- JQuery UI JavaScript -->
+    <script src="/static/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Include custom script -->
+    <script src="/static/js/custom.js"></script>
+
+    <!-- Perform custom JavaScript initialization calls -->
+    <script type="text/javascript">
+    	// Set active menu to -> 'Search'
+    	fSetActiveMenu('menuSearch');
+
+        // Enable JQuery UI DatePicker
+        $(function() {
+            $("#searchValueDate").datepicker({dateFormat: "yy-mm-dd"});
+        });
+    </script>
+
+</body>
+</html>

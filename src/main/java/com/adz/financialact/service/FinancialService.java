@@ -1,6 +1,7 @@
 package com.adz.financialact.service;
 
-import com.adz.financialact.common.bean.*;
+import com.adz.financialact.common.bean.Stats;
+import com.adz.financialact.common.bean.ValueResult;
 import com.adz.financialact.entity.*;
 import com.adz.financialact.repository.*;
 
@@ -12,6 +13,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.jpa.JpaSystemException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.sql.SQLException;
 
 /**
@@ -70,5 +72,36 @@ public class FinancialService implements FinancialServiceInterface
 	{
 		List<Stats> stats = valueRepository.getValueStats();
 		return stats;
+	}
+
+	/**
+	 * @see FinancialServiceInterface
+	 */
+	public List<ValueResult> getResultsByDate(String pValueDate)
+	{
+		List<ValueResult> valueResults = valueRepository.getValueResults();
+
+		// Play with streams
+		List<ValueResult> resultsByDate = valueResults
+											.stream() 								 			// convert list to stream
+											.filter(rv -> pValueDate.equals(rv.getValueDate())) // Filter by 'Date'
+											.collect(Collectors.toList()); 		 				// Return results as list
+
+		return resultsByDate;
+	}
+
+	/**
+	 * @see FinancialServiceInterface
+	 */
+	public List<ValueResult> getResultsByValueNumber(String pValueNumber)
+	{
+		List<ValueResult> valueResults = valueRepository.getValueResults();
+
+		List<ValueResult> resultsByValueNumber = valueResults
+													.stream() 					 							// convert list to stream
+													.filter(rv -> pValueNumber.equals(rv.getValueNumber())) // Filter by 'Value Number'
+													.collect(Collectors.toList()); 		 					// Return results as list
+
+		return resultsByValueNumber;
 	}
 }

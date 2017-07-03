@@ -1,6 +1,7 @@
 package com.adz.financialact.service;
 
-import com.adz.financialact.common.bean.*;
+import com.adz.financialact.common.bean.Stats;
+import com.adz.financialact.common.bean.ValueResult;
 import com.adz.financialact.entity.*;
 
 import org.springframework.dao.DataAccessException;
@@ -36,4 +37,10 @@ public interface FinancialServiceInterface
 
 	// todo document
 	public List<Stats> getValueStats();
+
+	// todo document
+	public List<ValueResult> getResultsByDate(String pValueDate);
+
+	// todo document
+	public List<ValueResult> getResultsByValueNumber(String pValueNumber);
 }
