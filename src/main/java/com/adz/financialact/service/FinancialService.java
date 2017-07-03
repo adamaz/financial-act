@@ -1,5 +1,6 @@
 package com.adz.financialact.service;
 
+import com.adz.financialact.common.bean.*;
 import com.adz.financialact.entity.*;
 import com.adz.financialact.repository.*;
 
@@ -51,5 +52,23 @@ public class FinancialService implements FinancialServiceInterface
 		// Handle isOk and throw custom exception
 
 		return isOk;
+	}
+
+	/**
+	 * @see FinancialServiceInterface
+	 */
+	public List<Stats> getActStats()
+	{
+		List<Stats> stats = actRepository.getActStats();
+		return stats;
+	}
+
+	/**
+	 * @see FinancialServiceInterface
+	 */
+	public List<Stats> getValueStats()
+	{
+		List<Stats> stats = valueRepository.getValueStats();
+		return stats;
 	}
 }

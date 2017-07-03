@@ -1,5 +1,6 @@
 package com.adz.financialact.service;
 
+import com.adz.financialact.common.bean.*;
 import com.adz.financialact.entity.*;
 
 import org.springframework.dao.DataAccessException;
@@ -29,4 +30,10 @@ public interface FinancialServiceInterface
 	 * @return true if the entity has been successfully saved into the database, false otherwise
 	 */
 	public boolean saveValueEntity(ValueEntity valueEntity) throws SQLException, JpaSystemException, DataAccessException;
+
+	// todo document
+	public List<Stats> getActStats();
+
+	// todo document
+	public List<Stats> getValueStats();
 }
